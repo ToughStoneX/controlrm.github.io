@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <title>ControLRM: Fast and Controllable 3D Generation via Large Reconstruction Model</title>
+	<!-- <link rel="icon" type="image/x-icon" href="../assets/css/images/favicon.ico"> -->
+    <link rel="icon" type="image/x-icon" href="assets/images/paintbrush.ico">
+    <meta content="ControLRM: Fast and Controllable 3D Generation via Large Reconstruction Model" name="description" />
+    <meta content="summary" name="twitter:card" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="static/css/template.css" rel="stylesheet" type="text/css" />
+    <link href="static/css/my_style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        WebFont.load({
+            google: {
+                families: ["Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic", "Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic", "Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic", "Changa One:400,400italic", "Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Varela Round:400", "Bungee Shade:regular", "Roboto:300,regular,500"]
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        ! function (o, c) {
+            var n = c.documentElement,
+                t = " w-mod-";
+            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+        }(window, document);
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <script type="text/javascript" src="static/js/zoom.js"></script>
+    <script type="text/javascript" src="static/js/video_comparison.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLDP9MKGC8"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-MLDP9MKGC8');
+    </script>
+</head>
+
+<body>
+    <div class="section hero nerf-_v2">
+        <div class="container-2 nerf_header_v2 w-container">
+            
+            <!-- <h1 class="nerf_title_v2">SweetDreamer: Aligning Geometric Priors <br> in 2D Diffusion for Consistent Text-to-3D</h1> -->
+            <h1 class="nerf_title_v2">ControLRM: Fast and Controllable 3D Generation via Large Reconstruction Model</h1>
+            <!-- <div class="nerf_subheader_v2">ICLR 2024</div> -->
+            <div class="nerf_subheader_v2">
+                <div>
+                    <a href="https://scholar.google.com/citations?user=mRC_emoAAAAJ" target="_blank" class="nerf_authors_v2">Hongbin Xu<span
+                        class="text-span_nerf"></span></a><sup>1,2</sup>,&nbsp;&nbsp;
+                    <a href="" target="_blank" class="nerf_authors_v2">Weitao Chen<span
+                        class="text-span_nerf"></span></a><sup>2</sup>,&nbsp;&nbsp;
+                    <a href="" target="_blank" class="nerf_authors_v2">Zhipeng Zhou<span
+                        class="text-span_nerf"></span></a><sup>3</sup>,&nbsp;&nbsp;
+                    <a href="" target="_blank" class="nerf_authors_v2">Feng Xiao<span
+                        class="text-span_nerf"></span></a><sup>1</sup>,&nbsp;&nbsp;
+                    <a href="" target="_blank" class="nerf_authors_v2">Baigui Sun<span
+                        class="text-span_nerf"></span></a><sup>2</sup>,&nbsp;&nbsp;    
+                    <a href="" target="_blank" class="nerf_authors_v2">Liefeng Bo<span
+                        class="text-span_nerf"></span></a><sup>2</sup>,&nbsp;&nbsp;   
+                    <a href="" target="_blank" class="nerf_authors_v2">Wenxiong Kang<span
+                        class="text-span_nerf"></span></a><sup>1</sup>,&nbsp;&nbsp;   
+                </div>
+                <div>
+                    <h1 class="nerf_affiliation_v2"><sup>1 </sup>South China University of Technology</h1>,
+                    <h1 class="nerf_affiliation_v2"><sup>2 </sup>Alibaba Group</h1>,
+                    <h1 class="nerf_affiliation_v2"><sup>3 </sup>INF Group</h1>
+                </div>
+
+                <div class="external-link">
+                    <a class="btn" href="http://arxiv.org/abs/2310.02596" role="button" target="_blank">
+                        <i class="ai ai-arxiv"></i> Arxiv </a>
+                    <a class="btn" href="paper/paper.pdf" role="button" target="_blank">
+                        <i class="fa fa-file-pdf"></i> Paper </a>
+                    <a class="btn" href="" role="button" target="_blank" disabled>
+                        <i class="fa-brands fa-github"></i> Code </a>
+                    <a class="btn btn-large btn-light" href="" role="button" target="_blank" disabled>
+                        <i class="fa-brands fa-youtube"></i> Video </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div data-anchor="slide1" class="section nerf_section">
+        <div class="w-container grey_container">
+            <h2 class="grey-heading_nerf">Abstract</h2>
+            <p class="paragraph-3 nerf_text nerf_results_text">
+                Despite recent advancements in 3D generation methods, achieving controllability still 
+                remains a challenging issue. Current approaches utilizing score-distillation sampling 
+                are hindered by laborious procedures that consume a significant amount of time. 
+                Furthermore, the process of first generating 2D representations and then mapping them 
+                to 3D lacks internal alignment between the two forms of representation. To address 
+                these challenges, we introduce ControLRM, an end-to-end feed-forward model designed for
+                rapid and controllable 3D generation using a large reconstruction model (LRM). ControLRM 
+                comprises a 2D condition generator, a condition encoding transformer, and a triplane 
+                decoder transformer. Instead of training our model from scratch, we advocate for a joint
+                training framework. In the condition training branch, we lock the triplane decoder and 
+                reuses the deep and robust encoding layers pretrained with millions of 3D data in LRM. 
+                In the image training branch, we unlock the triplane decoder to establish an implicit
+                alignment between the 2D and 3D representations. To ensure unbiased evaluation, we 
+                curate evaluation samples from three distinct datasets (G-OBJ, GSO, ABO) rather than 
+                relying on cherry-picking manual generation. The comprehensive experiments conducted on
+                quantitative and qualitative comparisons of 3D controllability and generation quality 
+                demonstrate the strong generalization capacity of our proposed approach.
+
+                <!-- Lifting 2D observations in pre-trained diffusion models to a 3D world for text-to-3D 
+		is inherently ambiguous. 2D diffusion models solely learn view-agnostic
+                priors and thus lack 3D knowledge during the lifting, leading to the multi-view
+                inconsistency problem. Our key finding reveals that this problem primarily stems
+                from geometric inconsistency, and addressing ambiguously placed geometries
+                substantially mitigates the issue in the final outcomes. Therefore, we focus on
+                improving the geometric consistency via enforcing the 2D geometric priors in diffusion 
+		models act in a way that aligns with well-defined 3D geometries during the
+                lifting, addressing the vast majority of the problem. This is realized by fine-tuning
+                the 2D diffusion to be viewpoint-aware and to produce view-specific geometric
+                maps of canonically oriented objects as in 3D datasets. Particularly, only coarse
+                3D geometries are used for aligning. This “coarse” alignment not only enables
+                the generation of geometries without multi-view inconsistency but also retains the
+                ability in 2D diffusion models to generate high-quality geometries of arbitrary objects 
+		unseen in 3D datasets. Furthermore, our <b style="color: rgb(124, 196, 245);">Aligned Geometric Priors (AGP)</b> are
+                generic and can be seamlessly integrated into various state-of-the-art pipelines,
+                obtaining high generalizability in terms of unseen geometric structures and visual
+                appearance while greatly alleviating multi-view inconsistency issues, and hence
+                representing a new state-of-the-art performance in text-to-3D. -->
+                <br>
+                <!-- <img  src="assets/images/overview.png"> -->
+            </p>
+        </div>
+    </div>
+
+    <div class="white_section_nerf  w-container">
+        <h2 class="grey-heading_nerf">Performance Overview</h2>
+        <div class="grid-container-1">
+            <img src="assets/images/comparison_introduction.png">
+
+            <p>
+                Performance and efficiency comparison among different conditional 3D generation methods. 
+                Fig. (a) shows the average time consumption on a single V100-32G GPU of different methods. 
+                Our ControLRM-T and ControLRM-D can respectively achieve 60 and 18 times faster inference
+                speed compared with the fastest baseline, MVControl [14]. Fig (b) shows the results of 15 
+                evaluation metrics on the G-Objaverse test set, including 3D controllability metrics (introduced 
+                in Sec. 4.2.1 of the paper) and controllable 3D generation metrics (introduced in Sec. 4.3.1 of the paper).
+            </p>
+        </div>
+    </div>
+
+    <div class="white_section_nerf  w-container">
+        <h2 class="grey-heading_nerf">Method Overview</h2>
+        <div class="grid-container-1">
+            <img src="assets/images/method.jpg">
+
+            <p>
+                The overall framework of ControLRM, a feed-forward controllable 3D generation model. ControLRM comprises a 2D condition generator, a
+                condition encoding transformer, and a triplane decoder transformer. Instead of training our model from scratch, we advocate for a joint
+                training framework. In the condition training branch, we lock the triplane decoder and reuses the deep and robust encoding layers
+                pretrained with millions of 3D data in LRM. In the image training branch, we unlock the triplane decoder to establish an implicit
+                alignment between the 2D and 3D representations.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- <div class="white_section_nerf  w-container">
+        <h2 class="grey-heading_nerf">NeRF-based Generated Results</h2>
+        <div class="grid-container-4">
+            <div>
+                <p class="myprompt nerf_text">A dragon-cat hybrid <br>&nbsp</p>
+                <video class="video" id="1" loop playsinline autoPlay muted
+                src="assets/videos/nerf-based/exp_30.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="1_merge"></canvas>
+            </div>
+            <div>
+                <p class="myprompt nerf_text">Albert Einstein with grey suit is riding a bicycle</p>
+                <video class="video" id="3" loop playsinline autoPlay muted
+                src="assets/videos/nerf-based/Einstein.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="3_merge"></canvas>
+            </div>
+            <div>
+                <p class="myprompt nerf_text">Mini Paris, highly detailed, <br>8K, HD</p>
+                <video class="video" id="2" loop playsinline autoPlay muted
+                src="assets/videos/nerf-based/miniParis.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="2_merge"></canvas>
+            </div>
+            <div>
+                <p class="myprompt nerf_text">A 3D model of mini China town, highly detailed, 8K, HD, blender 3d</p>
+                <video class="video" id="0" loop playsinline autoPlay muted
+                src="assets/videos/nerf-based/ChinaTown.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="0_merge"></canvas>
+            </div>
+        </div>
+        <div class="grid-container-1">
+            <a class="mybtn" href="nerf-based-gallery_0.html" role="button">
+             More Results </a>
+        </div>
+    </div>
+
+    <div class="white_section_nerf  w-container">
+        <h2 class="grey-heading_nerf">DMTet-based Generated Results</h2>
+        <div class="grid-container-4">
+            <div>
+                <p class="myprompt nerf_text">A boy in mohawk hairstyle, head only, 4K, HD, raw</p>
+                <video class="video" id="10" loop playsinline autoPlay muted
+                src="assets/videos/dmtet-based/2023_10_08/aboyinmohawkhairstyle_appearance.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="10_merge"></canvas>
+            </div>
+            <div>
+                <p class="myprompt nerf_text">Fire-breathing Phoenix, mythical bird, engulfed in flames, <br>rebirth and renewal, 3D render, 8K, HD</p>
+                <video class="video" id="11" loop playsinline autoPlay muted
+                src="assets/videos/dmtet-based/Phoenix7_appearance3.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="11_merge"></canvas>
+            </div>
+            <div>
+                <p class="myprompt nerf_text">A bulldog wearing a black pirate hat, highly detailed</p>
+                <video class="video" id="12" loop playsinline autoPlay muted
+                src="assets/videos/dmtet-based/dog_appearance8.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="12_merge"></canvas>
+            </div>
+            <div>
+                <p class="myprompt nerf_text">A 3D model of mini China town, highly detailed, 8K, HD, blender 3d</p>
+                <video class="video" id="13" loop playsinline autoPlay muted
+                src="assets/videos/dmtet-based/2023_10_05/ChinaTown0_appearance.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="13_merge"></canvas>
+            </div>
+        </div>
+
+        <div class="grid-container-1">
+            <a class="mybtn" href="dmtet-based-gallery_0.html" role="button">
+            More Results </a>
+        </div>
+    </div> -->
+
+
+    <!-- <div class="white_section_nerf  w-container">
+        <h2 class="grey-heading_nerf">Method Overview</h2>
+        <div class="grid-container-1">
+            <img src="assets/images/overview_pipelines.png">
+
+            <p>We fine-tune the 2D diffusion model (middle) to generate viewpoint-
+    conditioned canonical coordinates maps, which are rendered from canonically oriented 3D assets
+    (left), thereby aligning the geometric priors in the 2D diffusion. The aligned geometric priors can
+    then be seamlessly integrated into existing text-to-3D pipelines to confer 3D consistency (right),
+    while retaining their generalizability to obtain high-fidelity and highly varied 3D content.
+            </p>
+        </div>
+    </div> -->
+
+    <!-- <div class="white_section_nerf grey_container w-container">
+    <h2 class="grey-heading_nerf">BibTeX</h2>
+    <div class="bibtex">
+        <pre><code>@article{sweetdreamer,
+    author    = {Weiyu Li and Rui Chen and Xuelin Chen and Ping Tan},
+    title     = {SweetDreamer: Aligning Geometric Priors in 2D Diffusion for Consistent Text-to-3D},
+    journal   = {arxiv:2310.02596},
+    year      = {2023},
+    }</code></pre>
+    </div>
+    </div> -->
+
+</body>
+<footer>
+    This project page is inspired by <a href="https://github.com/nerfies/nerfies.github.io">Nerfies.</a>, © Weiyu Li. All rights reserved.
+</footer>
+
+</html>
