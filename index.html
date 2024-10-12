@@ -170,16 +170,98 @@
 
     <div class="white_section_nerf  w-container">
         <h2 class="grey-heading_nerf">Generated Results with Edge(Canny) Condition </h2>
+        <p>
+            Generated results given <b>Edge (Canny)</b> condition. The first row shows the input condition, the second row shows the results
+            of our <b>ControLRM-D</b>, and the third row shows the results of <b>MVControl</b>.
+        </p>
         <div class="grid-container-6">
             <div>
                 <p class="myprompt nerf_text">A purple teapot with a small horned hat. <br>&nbsp</p>
                 <img src="assets/videos/ours/gobj_condition_canny_000011.png" width="256" height="256">
+            </div>
+            <div>
+                <p class="myprompt nerf_text">A red and white plastic cup with a straw. <br>&nbsp</p>
+                <img src="assets/videos/ours/gobj_condition_canny_000012.png" width="256" height="256">
+            </div>
+            <div>
+                <p class="myprompt nerf_text">Thor Hammer. <br>&nbsp</p>
+                <img src="assets/videos/ours/gobj_condition_canny_000017.png" width="256" height="256">
+            </div>
+            <div>
+                <p class="myprompt nerf_text">A cartoon rocket ship with a person riding in it, flying in the air. <br>&nbsp</p>
+                <img src="assets/videos/ours/gobj_condition_canny_000019.png" width="256" height="256">
+            </div>
+            <div>
+                <p class="myprompt nerf_text">Purple sniper rifle. <br>&nbsp</p>
+                <img src="assets/videos/ours/gobj_condition_canny_000020.png" width="256" height="256">
+            </div>
+            <div>
+                <p class="myprompt nerf_text">A wooden crate with a cross design on it. <br>&nbsp</p>
+                <img src="assets/videos/ours/gobj_condition_canny_000053.png" width="256" height="256">
+            </div>
+        </div>
+
+        <div class="grid-container-6">
+            <div>
                 <video class="video" id="1" loop playsinline autoPlay muted
                 src="assets/videos/ours/gobj_controlrmd_canny_000011.mp4" onplay="resizeAndPlay(this)"></video>
                 <canvas class="videoMerge" id="1_merge"></canvas>
+            </div>
+            <div>
+                <video class="video" id="2" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_controlrmd_canny_000012.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="2_merge"></canvas>
+            </div>
+            <div>
+                <video class="video" id="3" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_controlrmd_canny_000017.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="3_merge"></canvas>
+            </div>
+            <div>
+                <video class="video" id="4" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_controlrmd_canny_000019.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="4_merge"></canvas>
+            </div>
+            <div>
+                <video class="video" id="5" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_controlrmd_canny_000020.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="5_merge"></canvas>
+            </div>
+            <div>
+                <video class="video" id="6" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_controlrmd_canny_000053.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="6_merge"></canvas>
+            </div>
+        </div>
+
+        <div class="grid-container-6">
+            <div>
                 <video class="video" id="1" loop playsinline autoPlay muted
                 src="assets/videos/ours/gobj_mvcontrol_canny_000011.mp4"></video>
             </div>
+            <div>
+                <video class="video" id="2" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_mvcontrol_canny_000012.mp4"></video>
+            </div>
+            <div>
+                <video class="video" id="3" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_mvcontrol_canny_000017.mp4"></video>
+            </div>
+            <div>
+                <video class="video" id="4" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_mvcontrol_canny_000019.mp4"></video>
+            </div>
+            <div>
+                <video class="video" id="5" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_mvcontrol_canny_000020.mp4"></video>
+            </div>
+            <div>
+                <video class="video" id="6" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_mvcontrol_canny_000053.mp4"></video>
+            </div>
+        </div>
+
+
             <!-- <div>
                 <p class="myprompt nerf_text">A purple teapot with a small horned hat. <br>&nbsp</p>
                 <video class="video" id="1" loop playsinline autoPlay muted
@@ -214,10 +296,10 @@
                 <canvas class="videoMerge" id="0_merge"></canvas>
             </div> -->
         </div>
-        <div class="grid-container-1">
+        <!-- <div class="grid-container-1">
             <a class="mybtn" href="nerf-based-gallery_0.html" role="button">
              More Results </a>
-        </div>
+        </div> -->
     </div>
 
 
