@@ -360,6 +360,102 @@
 
     </div>
 
+    <div class="white_section_nerf  w-container">
+        <h2 class="grey-heading_nerf">Generated Results with Depth Condition </h2>
+        <p>
+            Generated results given <b>Depth</b> condition. The first row shows the input condition, the second row shows the results
+            of our <b>ControLRM-D</b>, and the third row shows the results of <b>MVControl</b>. You change the visualization mode between 
+            rendered RGB images and depth maps via <b>dragging the sliders</b>.
+        </p>
+        <div class="grid-container-6">
+            <div>
+                <p class="myprompt nerf_text"><i>Wooden Barrel Model.</i> <br>&nbsp</p>
+                <img src="assets/videos/ours/gobj_condition_sketch_000061.png" width="256" height="256">
+            </div>
+            <div>
+                <p class="myprompt nerf_text"><i>Low poly a hamburger.</i> <br>&nbsp</p>
+                <img src="assets/videos/ours/gobj_condition_sketch_000086.png" width="256" height="256">
+            </div>
+            <div>
+                <p class="myprompt nerf_text"><i>An axe.</i> <br>&nbsp</p>
+                <img src="assets/videos/ours/gobj_condition_sketch_000088.png" width="256" height="256">
+            </div>
+            <div>
+                <p class="myprompt nerf_text"><i>A wooden console side table with drawers and shelves, featuring holes for added detail..</i> <br>&nbsp</p>
+                <img src="assets/videos/ours/gobj_condition_sketch_000189.png" width="256" height="256">
+            </div>
+            <div>
+                <p class="myprompt nerf_text"><i>A sword with a blue handle.</i> <br>&nbsp</p>
+                <img src="assets/videos/ours/gobj_condition_sketch_000199.png" width="256" height="256">
+            </div>
+            <div>
+                <p class="myprompt nerf_text"><i>A small wooden house with a tin roof.</i> <br>&nbsp</p>
+                <img src="assets/videos/ours/gobj_condition_sketch_000319.png" width="256" height="256">
+            </div>
+        </div>
+
+        <div class="grid-container-6">
+            <div>
+                <video class="video" id="S1" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_controlrmd_sketch_000061.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="S1_merge"></canvas>
+            </div>
+            <div>
+                <video class="video" id="S2" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_controlrmd_sketch_000086.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="S2_merge"></canvas>
+            </div>
+            <div>
+                <video class="video" id="S3" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_controlrmd_sketch_000088.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="S3_merge"></canvas>
+            </div>
+            <div>
+                <video class="video" id="S4" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_controlrmd_sketch_000189.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="S4_merge"></canvas>
+            </div>
+            <div>
+                <video class="video" id="S5" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_controlrmd_sketch_000199.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="S5_merge"></canvas>
+            </div>
+            <div>
+                <video class="video" id="S6" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_controlrmd_sketch_000319.mp4" onplay="resizeAndPlay(this)"></video>
+                <canvas class="videoMerge" id="S6_merge"></canvas>
+            </div>
+        </div>
+
+        <div class="grid-container-6">
+            <div>
+                <video class="video" id="1" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_mvcontrol_sketch_000061.mp4"></video>
+            </div>
+            <div>
+                <video class="video" id="2" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_mvcontrol_sketch_000086.mp4"></video>
+            </div>
+            <div>
+                <video class="video" id="3" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_mvcontrol_sketch_000088.mp4"></video>
+            </div>
+            <div>
+                <video class="video" id="4" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_mvcontrol_sketch_000189.mp4"></video>
+            </div>
+            <div>
+                <video class="video" id="5" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_mvcontrol_sketch_000199.mp4"></video>
+            </div>
+            <div>
+                <video class="video" id="6" loop playsinline autoPlay muted
+                src="assets/videos/ours/gobj_mvcontrol_sketch_000319.mp4"></video>
+            </div>
+        </div>
+
+    </div>
+
     
 
 
