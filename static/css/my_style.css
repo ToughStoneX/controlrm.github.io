@@ -124,6 +124,14 @@
   margin-right: 25px;
   margin-bottom: 25px;
 }
+.grid-container-7 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+}
 #controls {
   display: flex;
   justify-content: center;
